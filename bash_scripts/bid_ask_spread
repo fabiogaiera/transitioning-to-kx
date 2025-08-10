@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Permissions: Make sure that chmod +x script has been executed
+# Usage: ./script
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DATA_DIR="/home/$(whoami)/data"
+
+cd "$SCRIPT_DIR/.." || { echo "Failed to move up one directory"; exit 1; }
+
+if [ ! -f .venv/bin/activate ]; then
+  echo "Virtual environment not found."
+  exit 1
+fi
+
+source .venv/bin/activate || { echo "Failed to activate virtual environment"; exit 1; }
+
+if [ ! -f "$DATA_DIR/IBM_trades.csv" ] || [ ! -f "$DATA_DIR/IBM_quotes.csv" ]; then
+  echo "One or both input files are missing."
+  exit 1
+fi
+
+python -m bid_ask_spread.bid_ask_spread_script "$DATA_DIR/IBM_trades.csv" "$DATA_DIR/IBM_quotes.csv" || { echo "Python script failed"; exit 1; }
+
+echo "Script completed successfully."
+exit 0
