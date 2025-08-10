@@ -1,4 +1,4 @@
-# Transitioning to KX Products: Creating a Bid-Ask Spread Density Plot 📈
+# 📈 Transitioning to KX Products: Creating a Bid-Ask Spread Chart
 
 This post continues from my previous write-up: [Building OHLCV Datasets & Candlestick Charts 🕯️](https://www.linkedin.com/pulse/transitioning-kx-products-building-ohlcv-datasets-charts-fabio-gaiera-hozzf)
 
@@ -133,16 +133,12 @@ taq_table = taq_table.update(kx.Column('bid_ask_spread', value=((2 * abs(kx.Colu
 
 Now, let’s jump to the graphical stuff!
 
-### Building the Bid-Ask Spread Density Plot
+### Building the Bid-Ask Spread Chart
 
-We're going to plot the Kernel Density Estimate (KDE) of the **bid_ask_spread** column from the TAQ dataset.
-
-- The X-axis, labeled Effective Bid-Ask Spread, represents the trading cost — in other words, the difference between the price buyers are willing to pay (bid) and the price sellers are asking for (ask).  
-- The Y-axis, labeled Density, indicates how frequently each spread value occurs in the dataset. Higher peaks mean that the corresponding spread value is more common among the observed trades.
 
 ## GitHub Repository
 
-Here’s the link to the GitHub repository: [Bid-Ask Spread](https://github.com/fabiogaiera/transitioning-to-kx-products/tree/master/bid_ask_spread)
+Here’s the link to the GitHub repository: [Bid-Ask Spread](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/bid_ask_spread)
 
 ### Further Reading
 
