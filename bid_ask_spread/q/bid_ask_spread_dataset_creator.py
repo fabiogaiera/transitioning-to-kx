@@ -1,4 +1,4 @@
-# bid_ask_spread_df_creator.py
+# bid_ask_spread_dataset_creator.py
 
 import pykx as kx
 
@@ -23,7 +23,7 @@ timestamp,sym,bid_price,bid_size,ask_price,ask_size
 
 
 @log_execution_time
-def retrieve_bid_ask_spread_df(csv_file_path_1, csv_file_path_2, market_open, market_close):
+def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
     # Upload CSV files into kdb+ tables
     kx.q(f'trades: ("PSFJ";enlist ",") 0: `$":{csv_file_path_1}"')
     kx.q(f'quotes: ("PSFJFJ";enlist ",") 0: `$":{csv_file_path_2}"')
@@ -34,7 +34,7 @@ def retrieve_bid_ask_spread_df(csv_file_path_1, csv_file_path_2, market_open, ma
     kx.q(f'quotes: select from quotes where timestamp within({market_open};{market_close})')
 
     # Key the quotes table
-    kx.q('quotes: `timestamp`sym xkey quotes')
+    kx.q('quotes: `sym`timestamp xkey quotes')
 
     # As-Of Join between trades and quotes tables
     kx.q('taq: aj[`sym`timestamp;trades;quotes]')

@@ -1,4 +1,4 @@
-# bid_ask_spread_df_creator.py
+# bid_ask_spread_dataset_creator.py
 
 import pykx as kx
 
@@ -23,7 +23,7 @@ timestamp,sym,bid_price,bid_size,ask_price,ask_size
 
 
 @log_execution_time
-def retrieve_bid_ask_spread_df(csv_file_path_1, csv_file_path_2, market_open, market_close):
+def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
     # Upload CSV files into kdb+ tables
 
     trades = kx.q.read.csv(csv_file_path_1,
@@ -51,6 +51,8 @@ def retrieve_bid_ask_spread_df(csv_file_path_1, csv_file_path_2, market_open, ma
 
     # As-Of Join between trades and quotes tables
     taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filtered_quotes_keyed)
+
+    # Clean dataset here
 
     # Calculate mid_price
     taq_table = taq_table.update(
