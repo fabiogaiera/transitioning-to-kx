@@ -1,6 +1,6 @@
 loadcsvandsavetable:{[csvpath1;csvpath2;marketopen;marketclose]
 
-    // Load CSV into a table
+    // Load CSVs into tables
     trades: ("PSFJ";enlist ",") 0: `$csvpath1;
     quotes: ("PSFJFJ";enlist ",") 0: `$csvpath2;
 
@@ -8,19 +8,19 @@ loadcsvandsavetable:{[csvpath1;csvpath2;marketopen;marketclose]
     trades: select from trades where timestamp within (marketopen;marketclose);
     quotes: select from quotes where timestamp within (marketopen;marketclose);
 
-    //Key the table
+    //Key the quotes table
     quotes: `sym`timestamp xkey quotes;
 
     // As-Of Join
     taq: aj[`sym`timestamp;trades;quotes];
 
-    //Clean the dataset
 
     // Arithmetics to obtain bid-ask spread
     taq: update mid_price: (bid_price + ask_price) % 2 from taq;
     taq: update bid_ask_spread: 2 * (abs(price - mid_price) % mid_price) * 100 from taq;
 
     show taq
+
     //save table here
 
  }
