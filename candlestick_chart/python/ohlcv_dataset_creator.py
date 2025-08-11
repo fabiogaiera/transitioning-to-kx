@@ -12,7 +12,7 @@ timestamp,sym,price,size
 """
 
 
-def create_dataframe(csv_file_path, market_open_timespan, market_close_timespan):
+def create_dataset(csv_file_path, market_open_timespan, market_close_timespan):
     # Upload a CSV file into a kdb+ table
     trades = kx.q.read.csv(csv_file_path, [kx.TimestampAtom, kx.SymbolAtom, kx.FloatAtom, kx.LongAtom])
 

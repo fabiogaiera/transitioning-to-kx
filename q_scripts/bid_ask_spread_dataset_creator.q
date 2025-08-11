@@ -14,6 +14,8 @@ loadcsvandsavetable:{[csvpath1;csvpath2;marketopen;marketclose]
     // As-Of Join
     taq: aj[`sym`timestamp;trades;quotes];
 
+    //Clean the dataset
+
     // Arithmetics to obtain bid-ask spread
     taq: update mid_price: (bid_price + ask_price) % 2 from taq;
     taq: update bid_ask_spread: 2 * (abs(price - mid_price) % mid_price) * 100 from taq;

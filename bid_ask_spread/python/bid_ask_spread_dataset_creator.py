@@ -52,7 +52,7 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
     # As-Of Join between trades and quotes tables
     taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filtered_quotes_keyed)
 
-    # Clean dataset here
+    # Clean the dataset
 
     # Calculate mid_price
     taq_table = taq_table.update(
