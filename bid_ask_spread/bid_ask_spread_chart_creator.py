@@ -2,4 +2,5 @@
 
 
 def create_bid_ask_spread_chart(df):
-    print(df.head())
+    pass
+    # print(df.head())
