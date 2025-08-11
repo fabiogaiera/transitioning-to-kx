@@ -133,6 +133,8 @@ taq_table = taq_table.update(kx.Column('bid_ask_spread', value=((2 * abs(kx.Colu
 
 Now, let’s jump to the graphical stuff!
 
+We will calculate the bid-ask spread throughout a given day
+
 ### Building the Bid-Ask Spread Chart
 
 
