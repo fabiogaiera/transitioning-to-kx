@@ -24,14 +24,15 @@ timestamp,sym,bid_price,bid_size,ask_price,ask_size
 
 @log_execution_time
 def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
-    # Upload CSV files into kdb+ tables
-
+    # Upload CSV file into trades table
     trades = kx.q.read.csv(csv_file_path_1,
                            [kx.TimestampAtom, kx.SymbolAtom, kx.FloatAtom, kx.LongAtom])
 
+    # Upload CSV file into quotes table
     quotes = kx.q.read.csv(csv_file_path_2,
                            [kx.TimestampAtom, kx.SymbolAtom, kx.FloatAtom, kx.LongAtom, kx.FloatAtom, kx.LongAtom])
 
+    # Filter trades by market hours
     filtered_trades = trades.select(
         where=(
                 (kx.Column('timestamp') >= kx.q(market_open)) &
@@ -39,6 +40,7 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
         )
     )
 
+    # Filter quotes by market hours
     filtered_quotes = quotes.select(
         where=(
                 (kx.Column('timestamp') >= kx.q(market_open)) &
@@ -47,10 +49,23 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
     )
 
     # Key the quotes table
-    filtered_quotes_keyed = kx.q.xkey(['sym', 'timestamp'], filtered_quotes)
+    # filtered_quotes = kx.q.xkey(['sym', 'timestamp'], filtered_quotes)
+
+    # Order the quotes by timestamp
+    kx.q.xasc(kx.Column(['timestamp']), filtered_quotes)
+
+    # Apply the attribute grouped to sym
+    filtered_quotes.grouped('sym')
 
     # As-Of Join between trades and quotes tables
-    taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filtered_quotes_keyed)
+    taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filtered_quotes)
+
+    # Clean dataset
+    taq_table = taq_table.select(
+        where=(
+            (kx.Column('bid_price') != kx.FloatAtom.null)
+        )
+    )
 
     # Calculate mid_price
     taq_table = taq_table.update(

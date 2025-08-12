@@ -1,5 +1,6 @@
 loadcsvandsavetable:{[csvpath1;csvpath2;marketopen;marketclose]
 
+
     // Load CSVs into tables
     trades: ("PSFJ";enlist ",") 0: `$csvpath1;
     quotes: ("PSFJFJ";enlist ",") 0: `$csvpath2;
@@ -9,7 +10,10 @@ loadcsvandsavetable:{[csvpath1;csvpath2;marketopen;marketclose]
     quotes: select from quotes where timestamp within (marketopen;marketclose);
 
     //Key the quotes table
-    quotes: `sym`timestamp xkey quotes;
+    //quotes: `sym`timestamp xkey quotes;
+
+
+    quotes: update `g#sym from `timestamp xasc quotes;
 
     // As-Of Join
     taq: aj[`sym`timestamp;trades;quotes];
@@ -27,3 +31,6 @@ loadcsvandsavetable:{[csvpath1;csvpath2;marketopen;marketclose]
 
 
 loadcsvandsavetable["/home/fabio/data/IBM_trades.csv";"/home/fabio/data/IBM_quotes.csv";2025.06.16D13:30:00.000000000; 2025.06.16D20:00:00.000000000]
+
+
+exit 0

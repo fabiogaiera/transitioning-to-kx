@@ -34,7 +34,9 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
     kx.q(f'quotes: select from quotes where timestamp within({market_open};{market_close})')
 
     # Key the quotes table
-    kx.q('quotes: `sym`timestamp xkey quotes')
+    #kx.q('quotes: `sym`timestamp xkey quotes')
+
+    kx.q('quotes: update `g#sym from `timestamp xasc quotes')
 
     # As-Of Join between trades and quotes tables
     kx.q('taq: aj[`sym`timestamp;trades;quotes]')
