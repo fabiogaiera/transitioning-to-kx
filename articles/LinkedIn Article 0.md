@@ -1,4 +1,4 @@
-# Transitioning to KX Products: Exploring a Series of Use Cases 🚀
+# 🚀 Transitioning to KX: Exploring a Series of Use Cases 
 
 Migration projects are often challenging. Beyond the unexpected technical challenges that may arise during the process, new technologies can spark reluctance among individuals within the organization. In the case of kdb+ as a new technology for time series databases, the most prominent criticisms I've encountered have been:
 
@@ -7,7 +7,7 @@ Migration projects are often challenging. Beyond the unexpected technical challe
 - 🤯 **Difficult to learn**: kdb+ is very complicated,
 - 💻 **Support for adoption**: There is a lack of professionals specialized in kdb+
 
-Despite these criticisms —many of which are often unfounded— the organization moved forward with the transition to KX products. In my view, this was a wise, long-term decision. I’d like to share my experience working on this migration project so far:
+Despite these criticisms —many of which are often unfounded— the organization moved forward with the transition to KX. In my view, this was a wise, long-term decision. I’d like to share my experience working on this migration project so far:
 
 When migrating tick data to kdb+, one of the more straightforward aspects is handling raw trade and quote data. This is because such data can often be re-sourced from market data providers. Therefore, the main focus during migration lies in rethinking the architecture of the data analytics platform itself.
 

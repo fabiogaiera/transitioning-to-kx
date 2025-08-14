@@ -1,7 +1,9 @@
-# Transitioning to KX Products: Building OHLCV Datasets & Candlestick Charts 🕯️
+# 🕯 Transitioning to KX: Building OHLCV Datasets & Candlestick Charts ️
 
-This post is a continuation of my previous
-write-up: [Creating an Intraday Trading Volume Histogram 📊](https://www.linkedin.com/pulse/transitioning-kx-products-creating-intraday-trading-volume-gaiera-c1lxf)
+This post is a continuation of my previous write-ups: 
+
+[🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)  
+[📊 Transitioning to KX: Creating an Intraday Trading Volume Histogram](https://www.linkedin.com/pulse/transitioning-kx-products-creating-intraday-trading-volume-gaiera-c1lxf)  
 
 Today, we’re diving into something simple yet incredibly powerful in the world of trading data: **OHLCV datasets**.
 
@@ -182,7 +184,7 @@ def create_candlestick_chart(df):
 ```python
 import sys
 
-from candlestick_chart.python.ohlcv_dataset_creator import create_dataframe
+from candlestick_chart.python.ohlcv_dataset_creator import create_dataset
 from candlestick_chart.candlestick_chart_creator import create_candlestick_chart
 
 # Usage on Linux / macOS:
@@ -204,13 +206,13 @@ if __name__ == "__main__":
     market_open_timespan = '13:30:00.000000000'
     market_close_timespan = '20:00:00.000000000'
 
-    trades_data_frame = create_dataframe(trades_data, market_open_timespan, market_close_timespan)
+    trades_data_frame = create_dataset(trades_data, market_open_timespan, market_close_timespan)
     create_candlestick_chart(trades_data_frame)
 ```
 
 ## GitHub Repository
 
-Here’s the link to the GitHub repository: [Candlestick Chart](https://github.com/fabiogaiera/transitioning-to-kx-products/tree/master/candlestick_chart)
+Here’s the link to the GitHub repository: [Candlestick Chart](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/candlestick_chart)
 
 If you prefer using kdb+/q instead of the PyKX library, I’ve created a dedicated package called `q`, which contains
 kdb+/q expressions invoked via `kx.q("kdb+/q code here")`.

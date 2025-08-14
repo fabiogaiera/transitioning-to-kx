@@ -2,7 +2,7 @@
 
 import sys
 
-from bid_ask_spread.bid_ask_spread_chart_creator import create_bid_ask_spread_chart
+from bid_ask_spread.bid_ask_spread_histogram_creator import create_histogram
 from bid_ask_spread.python.bid_ask_spread_dataset_creator import create_dataset
 
 """
@@ -24,4 +24,4 @@ if __name__ == "__main__":
     market_close = '2025.06.16D20:00:00.000000000'
 
     bid_ask_spread_dataset = create_dataset(sys.argv[1], sys.argv[2], market_open, market_close)
-    create_bid_ask_spread_chart(bid_ask_spread_dataset)
+    create_histogram(bid_ask_spread_dataset)

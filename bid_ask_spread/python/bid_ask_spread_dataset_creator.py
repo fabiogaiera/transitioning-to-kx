@@ -24,21 +24,21 @@ timestamp,sym,bid_price,bid_size,ask_price,ask_size
 
 @log_execution_time
 def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
-    # Upload CSV files into kdb+ tables
-
+    # Upload CSV file into trades table
     trades = kx.q.read.csv(csv_file_path_1,
                            [kx.TimestampAtom, kx.SymbolAtom, kx.FloatAtom, kx.LongAtom])
-
+    # Upload CSV file into quotes table
     quotes = kx.q.read.csv(csv_file_path_2,
                            [kx.TimestampAtom, kx.SymbolAtom, kx.FloatAtom, kx.LongAtom, kx.FloatAtom, kx.LongAtom])
 
+    # Filter trades by market hours
     filtered_trades = trades.select(
         where=(
                 (kx.Column('timestamp') >= kx.q(market_open)) &
                 (kx.Column('timestamp') <= kx.q(market_close))
         )
     )
-
+    # Filter quotes by market hours
     filtered_quotes = quotes.select(
         where=(
                 (kx.Column('timestamp') >= kx.q(market_open)) &
@@ -46,34 +46,30 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
         )
     )
 
-    # Key the quotes table
-    filtered_quotes_keyed = kx.q.xkey(['sym', 'timestamp'], filtered_quotes)
-
+    # Order the quotes by timestamp
+    kx.q.xasc(kx.Column(['timestamp']), filtered_quotes)
+    # Apply the attribute grouped to sym
+    filtered_quotes.grouped('sym')
     # As-Of Join between trades and quotes tables
-    taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filtered_quotes_keyed)
+    taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filtered_quotes)
 
-    print(len(taq_table))
-
-    # Clean the dataset
+    # Clean dataset
     taq_table = taq_table.select(
-
         where=(
-                (kx.Column('bid_price') != kx.FloatAtom.null) or (kx.Column('ask_price') != kx.FloatAtom.null)
+            (kx.Column('bid_price') != kx.FloatAtom.null)
         )
-
     )
-
-    print(len(taq_table))
 
     # Calculate mid_price
     taq_table = taq_table.update(
         kx.Column('mid_price', value=((kx.Column('bid_price') + kx.Column('ask_price')) / 2)))
-
-    # Calculate Effective bid_ask_spread (Percentage Form)
-    taq_table = taq_table.update(
+    # Calculate the maximum Effective bid_ask_spread (Percentage Form) every 15 minutes
+    bid_ask_table = taq_table.select(
         kx.Column('bid_ask_spread',
-                  value=((2 * abs(kx.Column('price') - kx.Column('mid_price'))) / kx.Column('mid_price')) * 100)
+                  value=((2 * abs(kx.Column('price') - kx.Column('mid_price'))) / kx.Column('mid_price')) * 100
+                  ).max(),
+        by=kx.Column('time', value=kx.Column('timestamp').minute.xbar(15))
     )
 
     # Convert to pandas DataFrame
-    return taq_table.pd()
+    return bid_ask_table.pd()

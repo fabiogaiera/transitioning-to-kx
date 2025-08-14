@@ -1,6 +1,10 @@
-# 📈 Transitioning to KX Products: Creating a Bid-Ask Spread Chart
+# 📊 Transitioning to KX Products: Creating a Bid-Ask Spread Histogram
 
-This post continues from my previous write-up: [Building OHLCV Datasets & Candlestick Charts 🕯️](https://www.linkedin.com/pulse/transitioning-kx-products-building-ohlcv-datasets-charts-fabio-gaiera-hozzf)
+This post continues from my previous write-ups:
+
+[🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)  
+[📊 Transitioning to KX: Creating an Intraday Trading Volume Histogram ](https://www.linkedin.com/pulse/transitioning-kx-products-creating-intraday-trading-volume-gaiera-c1lxf)  
+[🕯 Transitioning to KX: Building OHLCV Datasets & Candlestick Charts ](https://www.linkedin.com/pulse/transitioning-kx-products-building-ohlcv-datasets-charts-fabio-gaiera-hozzf)  
 
 Today, we’re diving into more complex queries and arithmetic operations in **kdb+**.  
 Until now, we’ve focused on selections and simple aggregations within a single table. But what happens when we need to correlate data across **multiple tables**? If you're familiar with SQL, you might recall operators like `INNER JOIN`, `LEFT JOIN`,`RIGHT JOIN`, and so on. In the world of **Trades** and **Quotes** data, we introduce a particularly powerful concept: the **AS-OF JOIN** operator.
@@ -109,18 +113,23 @@ We won't enter into technical details of what the bid-ask spread is (there are s
 The key part of this code is to understand how the AS-OF JOIN works. With kdb+ we simply do:
 
 ```
-taq: aj[`sym`timestamp;trades;quotes]
+taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filtered_quotes)
 ```
 
 Once we obtain the TAQ dataset, we proceed with arithmetic operations to calculate the (effective) bid-ask spread:
 
 ```
-taq: update mid_price: (bid_price + ask_price) % 2 from taq
+taq_table = taq_table.update(
+        kx.Column('mid_price', value=((kx.Column('bid_price') + kx.Column('ask_price')) / 2)))
 
-taq: update bid_ask_spread: 2 * (abs(price - mid_price) % mid_price) * 100 from taq
+bid_ask_table = taq_table.select(
+    kx.Column('bid_ask_spread',
+              value=((2 * abs(kx.Column('price') - kx.Column('mid_price'))) / kx.Column('mid_price')) * 100
+              ).max(),
+    by=kx.Column('time', value=kx.Column('timestamp').minute.xbar(15))
 ```
 
-Beautiful, isn’t it? Getting comfortable with the terseness of kdb+?  
+Beautiful, isn’t it? Getting comfortable with PyKX?  
 Using PyKX instead (AS-OF JOIN followed by arithmetic to calculate bid-ask spread):
 
 ```
