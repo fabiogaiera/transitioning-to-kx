@@ -18,7 +18,6 @@ In this use case, I’ll walk you through key concepts and operations using kdb+
 
 - 📂 Uploading a CSV file (Trades Tick Data) into an in-memory kdb+ table
 - 🔍 Performing date-based queries
-- 🔄 Casting data types (e.g., from timestamp to date) — something you'll do frequently
 - 📊 Grouping and aggregating data using `xbar`
 - 🐍 Seamless integration with your existing Python code — because, let’s be honest, you probably have a lot of it!
 
@@ -30,7 +29,7 @@ Before we dive in, make sure:
 - ✅ You have some example CSV tick data ready (you can use sample data from my repository)
 
 
-## Let’s Build: Intraday Trading Volume Histogram
+## Let’s Build
 
 Now that you're set up, you're ready to build your Intraday Trading Volume Histogram step by step.
 
@@ -38,18 +37,15 @@ Now that you're set up, you're ready to build your Intraday Trading Volume Histo
 
 See [trades_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/trades_dataset_creator.py)
 
-### Step 2: Build the Histogram with Matplotlib
+### Step 2: Build the histogram with Matplotlib
 
 See [volumes_histogram_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/volumes_histogram_creator.py)
 
-### Step 3: The Main Script
+### Step 3: The main script
 
 See [intraday_trading_volume_script.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/intraday_trading_volume_script.py)
 
-
-## GitHub Repository
-
-Here's the link to the GitHub repository for full reference: [Intraday Trading Volume](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/intraday_trading_volume)
+Here's the link to the GitHub repository for full reference: [intraday_trading_volume](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/intraday_trading_volume)
 
 
 ## Potential Enhancements
@@ -61,10 +57,8 @@ Here's the link to the GitHub repository for full reference: [Intraday Trading V
 
 ## Further Readings
 
-- [count in PyKX](https://code.kx.com/pykx/3.1/api/pykx-execution/q.html#count)
-- [xbar in PyKX](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html#pykx.wrappers.Table.xbar)
-- [Database Creation and Management](https://code.kx.com/pykx/3.1/examples/db-management.html)
-- [Example: Real-Time Streaming using PyKX](https://code.kx.com/pykx/3.1/examples/streaming/index.html)
-
+- [count](https://code.kx.com/pykx/3.1/api/pykx-execution/q.html#count)
+- [xbar](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html#pykx.wrappers.Table.xbar)
+- [.pd()](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html)
 
 **Glad you made it to the end—hope you enjoyed it.**
