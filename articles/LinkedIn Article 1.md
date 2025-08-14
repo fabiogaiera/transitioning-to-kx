@@ -46,9 +46,6 @@ See [volumes_histogram_creator.py](https://github.com/fabiogaiera/transitioning-
 
 See [intraday_trading_volume_script.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/intraday_trading_volume_script.py)
 
-
-## GitHub Repository
-
 Here's the link to the GitHub repository for full reference: [Intraday Trading Volume](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/intraday_trading_volume)
 
 
@@ -61,8 +58,8 @@ Here's the link to the GitHub repository for full reference: [Intraday Trading V
 
 ## Further Readings
 
-- [count in PyKX](https://code.kx.com/pykx/3.1/api/pykx-execution/q.html#count)
-- [xbar in PyKX](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html#pykx.wrappers.Table.xbar)
-- [The .pd() conversion method](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html)
+- [count](https://code.kx.com/pykx/3.1/api/pykx-execution/q.html#count)
+- [xbar](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html#pykx.wrappers.Table.xbar)
+- [.pd()](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html)
 
 **Glad you made it to the end—hope you enjoyed it.**
