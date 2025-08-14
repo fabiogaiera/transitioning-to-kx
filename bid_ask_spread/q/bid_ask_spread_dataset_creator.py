@@ -24,8 +24,9 @@ timestamp,sym,bid_price,bid_size,ask_price,ask_size
 
 @log_execution_time
 def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
-    # Upload CSV files into kdb+ tables
+    # Upload CSV file into trades table
     kx.q(f'trades: ("PSFJ";enlist ",") 0: `$":{csv_file_path_1}"')
+    # Upload CSV file into quotes table
     kx.q(f'quotes: ("PSFJFJ";enlist ",") 0: `$":{csv_file_path_2}"')
 
     # Filter trades by market hours
@@ -33,20 +34,15 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
     # Filter quotes by market hours
     kx.q(f'quotes: select from quotes where timestamp within({market_open};{market_close})')
 
-    # Key the quotes table
-    #kx.q('quotes: `sym`timestamp xkey quotes')
-
+    # Order the quotes by timestamp and apply grouped to sym
     kx.q('quotes: update `g#sym from `timestamp xasc quotes')
-
     # As-Of Join between trades and quotes tables
     kx.q('taq: aj[`sym`timestamp;trades;quotes]')
 
     # Calculate mid_price
     kx.q('taq: update mid_price: (bid_price + ask_price) % 2 from taq')
-
     # Calculate Effective bid_ask_spread (Percentage Form)
-    taq_table = kx.q(
-        'update bid_ask_spread: 2 * (abs(price - mid_price) % mid_price) * 100 from taq')
+    taq_table = kx.q('update bid_ask_spread: 2 * (abs(price - mid_price) % mid_price) * 100 from taq')
 
     # Convert to pandas DataFrame
     return taq_table.pd()
