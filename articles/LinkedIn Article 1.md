@@ -1,4 +1,4 @@
-# Transitioning to KX Products: Creating an Intraday Trading Volume Histogram 📊
+# 📊 Transitioning to KX: Creating an Intraday Trading Volume Histogram
 
 This post is a continuation of my previous article: 
 
@@ -93,10 +93,9 @@ def create_histogram(df):
 ### Step 3: The Main Script
 
 ```python
-# intraday_trading_volume_script.py
-
 import sys
-from intraday_trading_volume.python.trades_dataframe_creator import create_dataframe
+
+from intraday_trading_volume.python.trades_dataset_creator import create_dataset
 from intraday_trading_volume.volumes_histogram_creator import create_histogram
 
 """
@@ -108,23 +107,27 @@ python -m intraday_trading_volume.intraday_trading_volume_script C:/path/to/file
 """
 
 if __name__ == "__main__":
+
     if len(sys.argv) != 3:
         print("Incorrect parameters")
         sys.exit(1)
 
+    # Path to the CSV file
     trades_data = sys.argv[1]
-    date = sys.argv[2].replace('-', '.')
+
+    # Daylight Saving Time (DST) for Eastern Time (ET) in the U.S. as we're analyzing the IBM ticker.
+    # Timestamp data type in q
     market_open = '2025.06.06D13:30:00.000000000'
     market_close = '2025.06.06D20:00:00.000000000'
 
-    trades_data_frame = create_dataframe(trades_data, date, market_open, market_close)
-    create_histogram(trades_data_frame)
+    trades_dataset = create_dataset(trades_data, market_open, market_close)
+    create_histogram(trades_dataset)
 ```
 
 
 ## GitHub Repository
 
-Here's the link to the GitHub repository: [Intraday Trading Volume](https://github.com/fabiogaiera/transitioning-to-kx-products/tree/master/intraday_trading_volume)
+Here's the link to the GitHub repository: [Intraday Trading Volume](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/intraday_trading_volume)
 
 
 ## Potential Enhancements

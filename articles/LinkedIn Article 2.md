@@ -1,4 +1,4 @@
-# Transitioning to KX Products: Building OHLCV Datasets & Candlestick Charts 🕯️
+# 🕯 Transitioning to KX: Building OHLCV Datasets & Candlestick Charts ️
 
 This post is a continuation of my previous write-ups: 
 
@@ -212,7 +212,7 @@ if __name__ == "__main__":
 
 ## GitHub Repository
 
-Here’s the link to the GitHub repository: [Candlestick Chart](https://github.com/fabiogaiera/transitioning-to-kx-products/tree/master/candlestick_chart)
+Here’s the link to the GitHub repository: [Candlestick Chart](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/candlestick_chart)
 
 If you prefer using kdb+/q instead of the PyKX library, I’ve created a dedicated package called `q`, which contains
 kdb+/q expressions invoked via `kx.q("kdb+/q code here")`.
