@@ -38,11 +38,11 @@ Now that you're set up, you're ready to build your Intraday Trading Volume Histo
 
 See [trades_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/trades_dataset_creator.py)
 
-### Step 2: Build the Histogram with Matplotlib
+### Step 2: Build the histogram with Matplotlib
 
 See [volumes_histogram_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/volumes_histogram_creator.py)
 
-### Step 3: The Main Script
+### Step 3: The main script
 
 See [intraday_trading_volume_script.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/intraday_trading_volume_script.py)
 
@@ -63,8 +63,6 @@ Here's the link to the GitHub repository for full reference: [Intraday Trading V
 
 - [count in PyKX](https://code.kx.com/pykx/3.1/api/pykx-execution/q.html#count)
 - [xbar in PyKX](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html#pykx.wrappers.Table.xbar)
-- [Database Creation and Management](https://code.kx.com/pykx/3.1/examples/db-management.html)
-- [Example: Real-Time Streaming using PyKX](https://code.kx.com/pykx/3.1/examples/streaming/index.html)
-
+- [The .pd() conversion method](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html)
 
 **Glad you made it to the end—hope you enjoyed it.**
