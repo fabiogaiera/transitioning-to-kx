@@ -18,7 +18,6 @@ In this use case, I’ll walk you through key concepts and operations using kdb+
 
 - 📂 Uploading a CSV file (Trades Tick Data) into an in-memory kdb+ table
 - 🔍 Performing date-based queries
-- 🔄 Casting data types (e.g., from timestamp to date) — something you'll do frequently
 - 📊 Grouping and aggregating data using `xbar`
 - 🐍 Seamless integration with your existing Python code — because, let’s be honest, you probably have a lot of it!
 
@@ -30,7 +29,7 @@ Before we dive in, make sure:
 - ✅ You have some example CSV tick data ready (you can use sample data from my repository)
 
 
-## Let’s Build: Intraday Trading Volume Histogram
+## Let’s Build
 
 Now that you're set up, you're ready to build your Intraday Trading Volume Histogram step by step.
 
@@ -46,7 +45,7 @@ See [volumes_histogram_creator.py](https://github.com/fabiogaiera/transitioning-
 
 See [intraday_trading_volume_script.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/intraday_trading_volume_script.py)
 
-Here's the link to the GitHub repository for full reference: [Intraday Trading Volume](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/intraday_trading_volume)
+Here's the link to the GitHub repository for full reference: [intraday_trading_volume](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/intraday_trading_volume)
 
 
 ## Potential Enhancements
