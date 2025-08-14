@@ -27,7 +27,6 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
     # Upload CSV file into trades table
     trades = kx.q.read.csv(csv_file_path_1,
                            [kx.TimestampAtom, kx.SymbolAtom, kx.FloatAtom, kx.LongAtom])
-
     # Upload CSV file into quotes table
     quotes = kx.q.read.csv(csv_file_path_2,
                            [kx.TimestampAtom, kx.SymbolAtom, kx.FloatAtom, kx.LongAtom, kx.FloatAtom, kx.LongAtom])
@@ -39,7 +38,6 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
                 (kx.Column('timestamp') <= kx.q(market_close))
         )
     )
-
     # Filter quotes by market hours
     filtered_quotes = quotes.select(
         where=(
@@ -48,15 +46,10 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
         )
     )
 
-    # Key the quotes table
-    # filtered_quotes = kx.q.xkey(['sym', 'timestamp'], filtered_quotes)
-
     # Order the quotes by timestamp
     kx.q.xasc(kx.Column(['timestamp']), filtered_quotes)
-
     # Apply the attribute grouped to sym
     filtered_quotes.grouped('sym')
-
     # As-Of Join between trades and quotes tables
     taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filtered_quotes)
 
@@ -70,7 +63,6 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
     # Calculate mid_price
     taq_table = taq_table.update(
         kx.Column('mid_price', value=((kx.Column('bid_price') + kx.Column('ask_price')) / 2)))
-
     # Calculate Effective bid_ask_spread (Percentage Form)
     taq_table = taq_table.update(
         kx.Column('bid_ask_spread',
