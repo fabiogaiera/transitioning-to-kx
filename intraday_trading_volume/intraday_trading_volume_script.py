@@ -1,6 +1,6 @@
 import sys
 
-from intraday_trading_volume.python.trades_dataset_creator import create_dataset
+from intraday_trading_volume.trades_dataset_creator import create_dataset
 from intraday_trading_volume.volumes_histogram_creator import create_histogram
 
 """
