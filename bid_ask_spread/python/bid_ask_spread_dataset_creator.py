@@ -63,11 +63,13 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
     # Calculate mid_price
     taq_table = taq_table.update(
         kx.Column('mid_price', value=((kx.Column('bid_price') + kx.Column('ask_price')) / 2)))
-    # Calculate Effective bid_ask_spread (Percentage Form)
-    taq_table = taq_table.update(
+    # Calculate the maximum Effective bid_ask_spread (Percentage Form) every 15 minutes
+    bid_ask_table = taq_table.select(
         kx.Column('bid_ask_spread',
-                  value=((2 * abs(kx.Column('price') - kx.Column('mid_price'))) / kx.Column('mid_price')) * 100)
+                  value=((2 * abs(kx.Column('price') - kx.Column('mid_price'))) / kx.Column('mid_price')) * 100
+                  ).max(),
+        by=kx.Column('time', value=kx.Column('timestamp').minute.xbar(15))
     )
 
     # Convert to pandas DataFrame
-    return taq_table.pd()
+    return bid_ask_table.pd()
