@@ -60,7 +60,7 @@ Given a CSV file with tick data, there's no need to use PyKX to create a pandas 
 as the CSV can be directly converted using pandas.
 
 The purpose here is to demonstrate how to integrate different formats and technologies. 
-The real power of kdb+ can be leveraged, for example, in high-frequency trading.
+The real power of PyKX and kdb+ can be leveraged, for example, in high-frequency trading.
 
 ## Further Readings
 
