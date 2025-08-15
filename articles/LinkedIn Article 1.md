@@ -54,6 +54,13 @@ Here's the link to the GitHub repository for full reference: [intraday_trading_v
   data.
 - Consider building a `kdb+tick` architecture when creating a real-time and historical tick data solution.
 
+## Conclusion
+
+Given a CSV file with tick data, there's no need to use PyKX to create a pandas DataFrame, 
+as the CSV can be directly converted using pandas.
+
+The purpose here is to demonstrate how to integrate different formats and technologies. 
+The real power of kdb+ can be leveraged, for example, in high-frequency trading.
 
 ## Further Readings
 
