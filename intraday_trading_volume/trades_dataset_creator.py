@@ -1,5 +1,3 @@
-# trades_dataframe_creator.py
-
 # Import necessary libraries
 import pykx as kx
 
