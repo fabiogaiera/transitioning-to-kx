@@ -4,7 +4,7 @@ This post is a continuation of my previous article:
 
 [🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)
 
-## Getting Comfortable with a New Stack
+## Getting comfortable with a new stack
 
 Even if it might seem trivial, it's worth emphasizing: migrating to a new technology can be frustrating.
 
@@ -12,7 +12,7 @@ At first, you're likely to be excited by the advanced capabilities the technolog
 into the complex stuff. But in my experience, the smoothest (and most rewarding) transition happens when you start with
 the basics and build up gradually.
 
-## What You'll Learn
+## What you'll learn
 
 In this use case, I’ll walk you through key concepts and operations using kdb+ and PyKX, including:
 
@@ -29,7 +29,7 @@ Before we dive in, make sure:
 - ✅ You have some example CSV tick data ready (you can use sample data from my repository)
 
 
-## Let’s Build
+## Let’s build
 
 Now that you're set up, you're ready to build your Intraday Trading Volume Histogram step by step.
 
@@ -48,7 +48,7 @@ See [intraday_trading_volume_script.py](https://github.com/fabiogaiera/transitio
 Here's the link to the GitHub repository for full reference: [intraday_trading_volume](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/intraday_trading_volume)
 
 
-## Potential Enhancements
+## Potential enhancements
 
 - In real-world scenarios, kdb+ tables are partitioned. This allows for optimal performance when storing/retrieving
   data.
