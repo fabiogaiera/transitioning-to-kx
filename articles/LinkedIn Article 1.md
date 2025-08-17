@@ -52,7 +52,7 @@ Here's the link to the GitHub repository for full reference: [intraday_trading_v
 
 - In real-world scenarios, kdb+ tables are partitioned. This allows for optimal performance when storing/retrieving
   data.
-- Consider building a `kdb+tick` architecture when creating a real-time and historical tick data solution.
+- Consider building a `kdb+tick` architecture when creating a real-time database and historical database with tick data.
 
 ## Conclusion
 
