@@ -68,4 +68,4 @@ The real power of PyKX and kdb+ can be leveraged, for example, in high-frequency
 - [xbar](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html#pykx.wrappers.Table.xbar)
 - [.pd()](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html)
 
-**Glad you made it to the end—hope you enjoyed it.**
+Glad you made it to the end—hope you enjoyed it.
