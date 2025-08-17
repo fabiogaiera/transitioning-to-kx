@@ -1,5 +1,3 @@
-# ohlcv_dataset_creator.py
-
 # Import necessary libraries
 import pykx as kx
 

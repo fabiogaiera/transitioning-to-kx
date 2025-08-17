@@ -1,5 +1,3 @@
-# candlestick_chart_creator.py
-
 import plotly.graph_objects as go
 
 

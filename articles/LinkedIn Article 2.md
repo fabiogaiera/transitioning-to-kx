@@ -184,7 +184,7 @@ def create_candlestick_chart(df):
 ```python
 import sys
 
-from candlestick_chart.python.ohlcv_dataset_creator import create_dataset
+from candlestick_chart.ohlcv_dataset_creator import create_dataset
 from candlestick_chart.candlestick_chart_creator import create_candlestick_chart
 
 # Usage on Linux / macOS:
