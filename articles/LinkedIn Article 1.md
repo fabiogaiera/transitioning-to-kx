@@ -62,7 +62,7 @@ as the CSV can be directly converted using pandas.
 The purpose here is to demonstrate how to integrate different formats and technologies. 
 The real power of PyKX and kdb+ can be leveraged, for example, in high-frequency trading.
 
-## Further Readings
+## Further readings
 
 - [count](https://code.kx.com/pykx/3.1/api/pykx-execution/q.html#count)
 - [xbar](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html#pykx.wrappers.Table.xbar)
