@@ -46,8 +46,6 @@ def create_dataset(csv_file_path_1, csv_file_path_2, market_open, market_close):
         )
     )
 
-    # Order the quotes by timestamp
-    kx.q.xasc(kx.Column(['timestamp']), filtered_quotes)
     # Apply the attribute grouped to sym
     filtered_quotes.grouped('sym')
     # As-Of Join between trades and quotes tables

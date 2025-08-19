@@ -106,54 +106,45 @@ We won't enter into technical details of what the bid-ask spread is (there are s
 - Ideal for algo trading, scalping, market making  
 - Better price transparency and execution quality
 
-## 🙄 Too much financial theory so far? Time to get hands-on!
+**Too much financial theory so far? Time to get hands-on!**
 
-### Building the TAQ dataset
+### 🔄 Building the TAQ dataset
 
-The key part of this code is to understand how the AS-OF JOIN works. With kdb+ we simply do:
+The key part of this code is to understand how to implement the AS-OF JOIN to retrieve our TAQ table. As follows, the steps:
+
+- 📂 Upload CSV files (tick-by-tick trades and quotes data) into in-memory kdb+ tables  
+
+- 🔍 Quant Traders are mostly interested to check the bid-ask spread evolution during regular market hours, therefore, we will do some filtering  
+
+- 🚀 Optimization is between the key aspects when working with kdb+, that's why we care about it. A way of doing that is using attributes. 
+We apply the grouped attribute to a column  
+
+- 🪄 Here where the magic happens to match timestamps (AS-OF JOIN Operator)
 
 ```
 taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filtered_quotes)
 ```
+- 🧹 A bit of cleansing. There could be the case in which there are trades that don't match with any quotes  
 
-Once we obtain the TAQ dataset, we proceed with arithmetic operations to calculate the (effective) bid-ask spread:
+- 🔢 Once we obtain a clean TAQ dataset, we proceed with arithmetic operations to calculate the (effective) bid-ask spread
 
-```
-taq_table = taq_table.update(
-        kx.Column('mid_price', value=((kx.Column('bid_price') + kx.Column('ask_price')) / 2)))
-
-bid_ask_table = taq_table.select(
-    kx.Column('bid_ask_spread',
-              value=((2 * abs(kx.Column('price') - kx.Column('mid_price'))) / kx.Column('mid_price')) * 100
-              ).max(),
-    by=kx.Column('time', value=kx.Column('timestamp').minute.xbar(15))
-```
-
-Beautiful, isn’t it? Getting comfortable with PyKX?  
-Using PyKX instead (AS-OF JOIN followed by arithmetic to calculate bid-ask spread):
-
-```
-taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filtered_quotes_keyed)
-
-taq_table = taq_table.update(kx.Column('mid_price', value=((kx.Column('bid_price') + kx.Column('ask_price')) / 2)))
-
-taq_table = taq_table.update(kx.Column('bid_ask_spread', value=((2 * abs(kx.Column('price') - kx.Column('mid_price'))) / kx.Column('mid_price')) * 100))
-```
+- 🧬 Integrate everything with your existing Python codebase (Transform KX data types into a pandas DataFrame — a
+  game-changer if you're coming from a Python-heavy stack!)
 
 Now, let’s jump to the graphical stuff!
 
-We will calculate the bid-ask spread throughout a given day
+### 📊 Building the Bid-Ask Spread Chart
 
-### Building the Bid-Ask Spread Chart
+### 🐍 Python script to generate the Chart
 
+### 💻 GitHub Repository
 
-## GitHub Repository
+Here’s the link to the repository: [Bid-Ask Spread](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/bid_ask_spread)
 
-Here’s the link to the GitHub repository: [Bid-Ask Spread](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/bid_ask_spread)
-
-### Further Reading
+### Further readings
 
 - [As-of join kdb+ Documentation](https://code.kx.com/q/ref/aj/)  
+- [Apply Attributes](https://code.kx.com/pykx/3.1/user-guide/advanced/attributes.html)
 - [Bid-Ask Spread Wikipedia Article](https://en.wikipedia.org/wiki/Bid%E2%80%93ask_spread)
 
 Grateful for your time and feedback — it helps me improve.
