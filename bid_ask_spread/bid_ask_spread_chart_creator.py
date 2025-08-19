@@ -1,5 +1,3 @@
-# bid_ask_spread_chart_creator.py
-
 # Import necessary libraries
 import matplotlib.pyplot as plt
 

@@ -1,7 +1,8 @@
+# Import necessary libraries
 import sys
 
-from bid_ask_spread.bid_ask_spread_dataset_creator import create_dataset
 from bid_ask_spread.bid_ask_spread_chart_creator import create_chart
+from bid_ask_spread.bid_ask_spread_dataset_creator import create_dataset
 
 """
 Usage in Linux / Mac:
