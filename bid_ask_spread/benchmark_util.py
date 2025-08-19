@@ -1,5 +1,4 @@
-# benchmark_util.py
-
+# Import necessary libraries
 import time
 
 """

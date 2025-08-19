@@ -63,8 +63,7 @@ In this walkthrough, I’ll show you how to construct OHLCV datasets and candles
 Here's what we’ll cover:
 
 - 📂 Upload a CSV file (tick-by-tick trade data) into an in-memory kdb+ table
-- 🧱 Add auxiliary columns to help with dataset construction (This will feel familiar if you’ve used the `pandas`
-  library)
+- 🧱 Add auxiliary columns to help with dataset construction (This will feel familiar if you’ve used the pandas library)
 - 🔍 Query the data (something we covered in a previous post)
 - 📊 Group and aggregate using built-in operators like `first`, `max`, `min`, and `last` (this is new!)
 - 🧬 Integrate everything with your existing Python codebase (Transform KX data types into a pandas DataFrame — a
@@ -83,7 +82,7 @@ See [candlestick_chart_script.py](https://github.com/fabiogaiera/transitioning-t
 
 ### 💻 GitHub repository
 
-Here’s the link to the GitHub repository for full reference: [candlestick_chart](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/candlestick_chart)
+Here’s the link to the repository for full reference: [candlestick_chart](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/candlestick_chart)
 
 ## 📖 Further readings
 

@@ -1,9 +1,8 @@
-# bid_ask_spread_script.py
-
+# Import necessary libraries
 import sys
 
-from bid_ask_spread.bid_ask_spread_histogram_creator import create_histogram
-from bid_ask_spread.python.bid_ask_spread_dataset_creator import create_dataset
+from bid_ask_spread.bid_ask_spread_chart_creator import create_chart
+from bid_ask_spread.bid_ask_spread_dataset_creator import create_dataset
 
 """
 Usage in Linux / Mac:
@@ -19,9 +18,12 @@ if __name__ == "__main__":
         print("Incorrect parameters")
         sys.exit(1)
 
+    trades = sys.argv[1]
+    quotes = sys.argv[2]
+
     # Daylight Saving Time (DST) for Eastern Time (ET) in the U.S. as we're analyzing the IBM ticker.
     market_open = '2025.06.16D13:30:00.000000000'
     market_close = '2025.06.16D20:00:00.000000000'
 
-    bid_ask_spread_dataset = create_dataset(sys.argv[1], sys.argv[2], market_open, market_close)
-    create_histogram(bid_ask_spread_dataset)
+    bid_ask_spread_dataset = create_dataset(trades, quotes, market_open, market_close)
+    create_chart(bid_ask_spread_dataset)
