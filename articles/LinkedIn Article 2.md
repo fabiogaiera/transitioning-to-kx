@@ -83,7 +83,7 @@ See [candlestick_chart_script.py](https://github.com/fabiogaiera/transitioning-t
 
 ### 💻 GitHub repository
 
-Here’s the link to the GitHub repository for full reference: [candlestick_chart](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/candlestick_chart)
+Here’s the link to the repository for full reference: [candlestick_chart](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/candlestick_chart)
 
 ## 📖 Further readings
 
