@@ -2,8 +2,8 @@
 
 This post is a continuation of my previous write-ups: 
 
-[🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)  
-[📊 Transitioning to KX: Creating an Intraday Trading Volume Histogram](https://www.linkedin.com/pulse/transitioning-kx-products-creating-intraday-trading-volume-gaiera-c1lxf)  
+- [🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)  
+- [📊 Transitioning to KX: Creating an Intraday Trading Volume Histogram](https://www.linkedin.com/pulse/transitioning-kx-products-creating-intraday-trading-volume-gaiera-c1lxf)  
 
 Today, we’re diving into something simple yet incredibly powerful in the world of trading data: **OHLCV datasets**.
 

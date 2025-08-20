@@ -2,7 +2,7 @@
 
 This post is a continuation of my previous article: 
 
-[🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)
+- [🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)
 
 ## ⚠️ Getting comfortable with a new stack
 
