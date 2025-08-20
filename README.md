@@ -1,4 +1,4 @@
-# Transitioning to KX Products: Exploring a Series of Use Cases
+# Transitioning to KX: Exploring a Series of Use Cases
 
 While migrating tick data to kdb+, one of the more straightforward aspects is handling raw trade and quote
 data. This is because such data can often be re-sourced from market data providers. Therefore, the main focus during
