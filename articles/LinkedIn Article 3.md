@@ -110,38 +110,37 @@ We won't enter into technical details of what the bid-ask spread is (there are s
 
 ### 🔄 Building the TAQ dataset
 
-The key part of this code is to understand how to implement the AS-OF JOIN to retrieve our TAQ table. As follows, the steps:
+The key part of this code is understanding how to implement the **AS-OF JOIN** to retrieve our TAQ table. Here are the steps:
 
 - 📂 Upload CSV files (tick-by-tick trades and quotes data) into in-memory kdb+ tables  
 
-- 🔍 Quant Traders are mostly interested to check the bid-ask spread evolution during regular market hours, therefore, we will do some filtering  
+- 🔍 Quant Traders are mostly interested in analyzing the bid-ask spread evolution during regular market hours, so we'll apply some filtering.  
 
-- 🚀 Optimization is between the key aspects when working with kdb+, that's why we care about it. A way of doing that is using attributes. 
-We apply the **grouped** attribute to a column  
+- 🚀 Optimization is a key aspect when working with kdb+, that's why we care about it. One way to optimize is by using attributes. In our case, we apply the grouped attribute to a column.
 
-- 🪄 Here where the magic happens to match timestamps (AS-OF JOIN Operator)
+- 🪄 This is where the magic happens: matching timestamps using the AS-OF JOIN operator.
 
 ```
 taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filtered_quotes)
 ```
-- 🧹 A bit of cleansing. There could be the case in which there are trades that don't match with any quotes  
+- 🧹 A bit of cleansing. There may be trades that don't match with any quotes.  
 
 - 🔢 Once we obtain a clean TAQ dataset, we proceed with arithmetic operations to calculate the (effective) bid-ask spread
 
 - 🧬 Integrate everything with your existing Python codebase (Transform KX data types into a pandas DataFrame — a
   game-changer if you're coming from a Python-heavy stack!)  
 
-Translated to code [bid_ask_spread_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/bid_ask_spread/bid_ask_spread_dataset_creator.py)
+Translated to code: [bid_ask_spread_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/bid_ask_spread/bid_ask_spread_dataset_creator.py)
 
 ### 📊 Building the Bid-Ask Spread Chart
 
-Here is the code of graphical stuff [bid_ask_spread_chart_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/bid_ask_spread/bid_ask_spread_chart_creator.py)
+Here is the code for the chart: [bid_ask_spread_chart_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/bid_ask_spread/bid_ask_spread_chart_creator.py)
 
 ### 🐍 Python script to generate the Chart
 
-See [bid_ask_spread_script.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/bid_ask_spread/bid_ask_spread_script.py)
+See: [bid_ask_spread_script.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/bid_ask_spread/bid_ask_spread_script.py)
 
-### Further readings
+### 📚 Further readings
 
 - [As-of join kdb+ Documentation](https://code.kx.com/q/ref/aj/)  
 - [Apply Attributes](https://code.kx.com/pykx/3.1/user-guide/advanced/attributes.html)
