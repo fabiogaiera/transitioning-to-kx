@@ -148,4 +148,4 @@ See: [bid_ask_spread_script.py](https://github.com/fabiogaiera/transitioning-to-
 - [Apply Attributes](https://code.kx.com/pykx/3.1/user-guide/advanced/attributes.html)
 - [Bid-Ask Spread Wikipedia Article](https://en.wikipedia.org/wiki/Bid%E2%80%93ask_spread)
 
-Grateful for your time and feedback — it helps me improve.
+Grateful for your time and feedback. It helps me improve.
