@@ -45,9 +45,6 @@ See [volumes_histogram_creator.py](https://github.com/fabiogaiera/transitioning-
 
 See [intraday_trading_volume_script.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/intraday_trading_volume_script.py)
 
-Here's the link to the GitHub repository for full reference: [intraday_trading_volume](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/intraday_trading_volume)
-
-
 ## Potential enhancements
 
 - In real-world scenarios, kdb+ tables are partitioned. This allows for optimal performance when storing/retrieving

@@ -141,10 +141,6 @@ Here is the code of graphical stuff [bid_ask_spread_chart_creator.py](https://gi
 
 See [bid_ask_spread_script.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/bid_ask_spread/bid_ask_spread_script.py)
 
-### 💻 GitHub repository
-
-Here’s the link to the repository for full reference: [Bid-Ask Spread](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/bid_ask_spread)
-
 ### Further readings
 
 - [As-of join kdb+ Documentation](https://code.kx.com/q/ref/aj/)  

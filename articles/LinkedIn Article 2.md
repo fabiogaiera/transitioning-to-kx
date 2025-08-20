@@ -69,20 +69,16 @@ Here's what we’ll cover:
 - 🧬 Integrate everything with your existing Python codebase (Transform KX data types into a pandas DataFrame — a
   game-changer if you're coming from a Python-heavy stack!)
 
-Translated to code: [ohlcv_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/candlestick_chart/ohlcv_dataset_creator.py)
+Translated to code [ohlcv_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/candlestick_chart/ohlcv_dataset_creator.py)
 
 
 ### 🕯️ Candlestick Chart Creation
 
-In this section, we’ll code the candlestick chart using the Plotly library: [candlestick_chart_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/candlestick_chart/candlestick_chart_creator.py)
+In this section, we’ll code the candlestick chart using the Plotly library [candlestick_chart_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/candlestick_chart/candlestick_chart_creator.py)
 
 ### 🐍 Python script to generate the Chart
 
 See [candlestick_chart_script.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/candlestick_chart/candlestick_chart_script.py)
-
-### 💻 GitHub repository
-
-Here’s the link to the repository for full reference: [candlestick_chart](https://github.com/fabiogaiera/transitioning-to-kx/tree/master/candlestick_chart)
 
 ## 📖 Further readings
 
