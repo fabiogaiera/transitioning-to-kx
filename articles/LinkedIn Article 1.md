@@ -26,8 +26,6 @@ Now that you're set up, you're ready to build your Intraday Trading Volume Histo
 
 ### 🗂️ Step 1: Create the dataset with PyKX
 
-Here's what we’ll cover:
-
 - 📂 Upload a CSV file (tick-by-tick trade data) into an in-memory kdb+ table
 - 🔍 Performing date-based queries
 - 📊 Group and aggregate using built-in operator `xbar`
