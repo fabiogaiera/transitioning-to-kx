@@ -17,4 +17,4 @@ It's well known that the syntactic style of kdb+/q can be difficult for newbies.
 
 Over the coming days, I will showcase a series of use cases that will help you understand the basics of how to seamlessly integrate kdb+ into your organization, leveraging a modern tech stack including the Python ecosystem.
 
-**Thanks for reading!**
+Thanks for reading!

@@ -4,7 +4,7 @@ This post is a continuation of my previous article:
 
 [🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)
 
-## Getting comfortable with a new stack
+## ⚠️ Getting comfortable with a new stack
 
 Even if it might seem trivial, it's worth emphasizing: migrating to a new technology can be frustrating.
 
@@ -12,7 +12,7 @@ At first, you're likely to be excited by the advanced capabilities the technolog
 into the complex stuff. But in my experience, the smoothest (and most rewarding) transition happens when you start with
 the basics and build up gradually.
 
-## What you'll learn
+## 📝 What you'll learn
 
 In this use case, I’ll walk you through key concepts and operations using kdb+ and PyKX, including:
 
@@ -21,7 +21,7 @@ In this use case, I’ll walk you through key concepts and operations using kdb+
 - 📊 Grouping and aggregating data using `xbar`
 - 🐍 Seamless integration with your existing Python code — because, let’s be honest, you probably have a lot of it!
 
-## Prerequisites
+## ✅ Prerequisites
 
 Before we dive in, make sure:
 
@@ -29,29 +29,36 @@ Before we dive in, make sure:
 - ✅ You have some example CSV tick data ready (you can use sample data from my repository)
 
 
-## Let’s build
+## 🛠️ Let’s build
 
 Now that you're set up, you're ready to build your Intraday Trading Volume Histogram step by step.
 
-### Step 1: Create the dataset with PyKX
+### 🗂️ Step 1: Create the dataset with PyKX
+
+Here's what we’ll cover:
+
+- 📂 Upload a CSV file (tick-by-tick trade data) into an in-memory kdb+ table
+- 🔍 Query the data
+- 📊 Group and aggregate using built-in operator `xbar`
+- 🧬 Integrate everything with your existing Python codebase
 
 See: [trades_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/trades_dataset_creator.py)
 
-### Step 2: Build the histogram with Matplotlib
+### 📊 Step 2: Build the histogram with Matplotlib
 
 See: [volumes_histogram_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/volumes_histogram_creator.py)
 
-### Step 3: The main script
+### 🐍 Step 3: The main script
 
 See: [intraday_trading_volume_script.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/intraday_trading_volume_script.py)
 
-## Potential enhancements
+## ✨ Potential enhancements
 
 - In real-world scenarios, kdb+ tables are partitioned. This allows for optimal performance when storing/retrieving
   data.
 - Consider building a `kdb+tick` architecture when creating a real-time database and historical database with tick data.
 
-## Conclusion
+## 🧾 Conclusion
 
 Given a CSV file with tick data, there's no need to use PyKX to create a pandas DataFrame, 
 as the CSV can be directly converted using pandas.
@@ -59,7 +66,7 @@ as the CSV can be directly converted using pandas.
 The purpose here is to demonstrate how to integrate different formats and technologies. 
 The real power of PyKX and kdb+ can be leveraged, for example, in high-frequency trading.
 
-## Further readings
+## 📚 Further readings
 
 - [count](https://code.kx.com/pykx/3.1/api/pykx-execution/q.html#count)
 - [xbar](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html#pykx.wrappers.Table.xbar)
