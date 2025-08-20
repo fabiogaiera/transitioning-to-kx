@@ -1,4 +1,4 @@
-# 📊 Transitioning to KX Products: Creating a Bid-Ask Spread Histogram
+# 📊 Transitioning to KX: Creating a Bid-Ask Spread Chart
 
 This post continues from my previous write-ups:
 
@@ -107,6 +107,8 @@ We won't enter into technical details of what the bid-ask spread is (there are s
 - Better price transparency and execution quality
 
 **Too much financial theory so far? Time to get hands-on!**
+
+## 🛠️ Time to build!
 
 ### 🔄 Building the TAQ dataset
 
