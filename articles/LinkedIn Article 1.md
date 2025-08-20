@@ -8,18 +8,9 @@ This post is a continuation of my previous article:
 
 Even if it might seem trivial, it's worth emphasizing: migrating to a new technology can be frustrating.
 
-At first, you're likely to be excited by the advanced capabilities the technology offers—and tempted to jump straight
+At first, you're likely to be excited by the advanced capabilities the technology offers and tempted to jump straight
 into the complex stuff. But in my experience, the smoothest (and most rewarding) transition happens when you start with
 the basics and build up gradually.
-
-## 📝 What you'll learn
-
-In this use case, I’ll walk you through key concepts and operations using kdb+ and PyKX, including:
-
-- 📂 Uploading a CSV file (Trades Tick Data) into an in-memory kdb+ table
-- 🔍 Performing date-based queries
-- 📊 Grouping and aggregating data using `xbar`
-- 🐍 Seamless integration with your existing Python code — because, let’s be honest, you probably have a lot of it!
 
 ## ✅ Prerequisites
 
@@ -38,9 +29,9 @@ Now that you're set up, you're ready to build your Intraday Trading Volume Histo
 Here's what we’ll cover:
 
 - 📂 Upload a CSV file (tick-by-tick trade data) into an in-memory kdb+ table
-- 🔍 Query the data
+- 🔍 Performing date-based queries
 - 📊 Group and aggregate using built-in operator `xbar`
-- 🧬 Integrate everything with your existing Python codebase
+- 🐍 Seamless integration with your existing Python code — because, let’s be honest, you probably have a lot of it!
 
 See: [trades_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/intraday_trading_volume/trades_dataset_creator.py)
 
@@ -72,4 +63,4 @@ The real power of PyKX and kdb+ can be leveraged, for example, in high-frequency
 - [xbar](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html#pykx.wrappers.Table.xbar)
 - [.pd()](https://code.kx.com/pykx/3.1/api/pykx-q-data/wrappers.html)
 
-Glad you made it to the end—hope you enjoyed it.
+Glad you made it to the end and I hope you enjoyed it.
