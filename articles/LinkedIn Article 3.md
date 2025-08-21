@@ -29,7 +29,7 @@ An **AS-OF JOIN** matches rows from two tables based on the closest **preceding 
 ## 🆚 How does it differ from a standard JOIN?
 
 | Standard JOIN                  | AS-OF JOIN                              |
-|-------------------------------|---------------------------------------|
+|--------------------------------|-----------------------------------------|
 | Requires exact timestamp match | Finds the most recent earlier timestamp |
 
 ## 🛠️ Where is the AS-OF JOIN operator available?
@@ -142,7 +142,7 @@ See: [bid_ask_spread_script.py](https://github.com/fabiogaiera/transitioning-to-
 
 ### 📚 Further readings
 
-- [As-of join kdb+ Documentation](https://code.kx.com/q/ref/aj/)  
+- [As-Of Join](https://code.kx.com/pykx/3.1/api/pykx-execution/q.html#aj)  
 - [Apply Attributes](https://code.kx.com/pykx/3.1/user-guide/advanced/attributes.html)
 - [Bid-Ask Spread Wikipedia Article](https://en.wikipedia.org/wiki/Bid%E2%80%93ask_spread)
 
