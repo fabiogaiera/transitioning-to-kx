@@ -2,8 +2,8 @@
 
 This post is a continuation of my previous write-ups: 
 
-[🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)  
-[📊 Transitioning to KX: Creating an Intraday Trading Volume Histogram](https://www.linkedin.com/pulse/transitioning-kx-products-creating-intraday-trading-volume-gaiera-c1lxf)  
+- [🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)  
+- [📊 Transitioning to KX: Creating an Intraday Trading Volume Histogram](https://www.linkedin.com/pulse/transitioning-kx-products-creating-intraday-trading-volume-gaiera-c1lxf)  
 
 Today, we’re diving into something simple yet incredibly powerful in the world of trading data: **OHLCV datasets**.
 
@@ -60,8 +60,6 @@ In this walkthrough, I’ll show you how to construct OHLCV datasets and candles
 
 ### 📊 OHLCV Dataset Creation
 
-Here's what we’ll cover:
-
 - 📂 Upload a CSV file (tick-by-tick trade data) into an in-memory kdb+ table
 - 🧱 Add auxiliary columns to help with dataset construction (This will feel familiar if you’ve used the pandas library)
 - 🔍 Query the data (something we covered in a previous post)
@@ -69,12 +67,11 @@ Here's what we’ll cover:
 - 🧬 Integrate everything with your existing Python codebase (Transform KX data types into a pandas DataFrame — a
   game-changer if you're coming from a Python-heavy stack!)
 
-Translated to code: [ohlcv_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/candlestick_chart/ohlcv_dataset_creator.py)
-
+See: [ohlcv_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/candlestick_chart/ohlcv_dataset_creator.py)
 
 ### 🕯️ Candlestick Chart Creation
 
-In this section, we’ll code the candlestick chart using the Plotly library: [candlestick_chart_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/candlestick_chart/candlestick_chart_creator.py)
+See: [candlestick_chart_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/candlestick_chart/candlestick_chart_creator.py)
 
 ### 🐍 Python script to generate the Chart
 

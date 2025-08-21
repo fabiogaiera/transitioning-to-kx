@@ -2,9 +2,9 @@
 
 This post continues from my previous write-ups:
 
-[🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)  
-[📊 Transitioning to KX: Creating an Intraday Trading Volume Histogram ](https://www.linkedin.com/pulse/transitioning-kx-products-creating-intraday-trading-volume-gaiera-c1lxf)  
-[🕯 Transitioning to KX: Building OHLCV Datasets & Candlestick Charts ](https://www.linkedin.com/pulse/transitioning-kx-products-building-ohlcv-datasets-charts-fabio-gaiera-hozzf)  
+- [🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)  
+- [📊 Transitioning to KX: Creating an Intraday Trading Volume Histogram ](https://www.linkedin.com/pulse/transitioning-kx-products-creating-intraday-trading-volume-gaiera-c1lxf)  
+- [🕯 Transitioning to KX: Building OHLCV Datasets & Candlestick Charts ](https://www.linkedin.com/pulse/transitioning-kx-products-building-ohlcv-datasets-charts-fabio-gaiera-hozzf)  
 
 Today, we’re diving into more complex queries and arithmetic operations in **kdb+**.  
 Until now, we’ve focused on selections and simple aggregations within a single table. But what happens when we need to correlate data across **multiple tables**? If you're familiar with SQL, you might recall operators like `INNER JOIN`, `LEFT JOIN`,`RIGHT JOIN`, and so on. In the world of **Trades** and **Quotes** data, we introduce a particularly powerful concept: the **AS-OF JOIN** operator.
@@ -29,7 +29,7 @@ An **AS-OF JOIN** matches rows from two tables based on the closest **preceding 
 ## 🆚 How does it differ from a standard JOIN?
 
 | Standard JOIN                  | AS-OF JOIN                              |
-|-------------------------------|---------------------------------------|
+|--------------------------------|-----------------------------------------|
 | Requires exact timestamp match | Finds the most recent earlier timestamp |
 
 ## 🛠️ Where is the AS-OF JOIN operator available?
@@ -106,8 +106,6 @@ We won't enter into technical details of what the bid-ask spread is (there are s
 - Ideal for algo trading, scalping, market making  
 - Better price transparency and execution quality
 
-**Too much financial theory so far? Time to get hands-on!**
-
 ## 🛠️ Time to build!
 
 ### 🔄 Building the TAQ dataset
@@ -132,11 +130,11 @@ taq_table = kx.q.aj(kx.SymbolVector(['sym', 'timestamp']), filtered_trades, filt
 - 🧬 Integrate everything with your existing Python codebase (Transform KX data types into a pandas DataFrame — a
   game-changer if you're coming from a Python-heavy stack!)  
 
-Translated to code: [bid_ask_spread_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/bid_ask_spread/bid_ask_spread_dataset_creator.py)
+See: [bid_ask_spread_dataset_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/bid_ask_spread/bid_ask_spread_dataset_creator.py)
 
 ### 📊 Building the Bid-Ask Spread Chart
 
-Here is the code for the chart: [bid_ask_spread_chart_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/bid_ask_spread/bid_ask_spread_chart_creator.py)
+See: [bid_ask_spread_chart_creator.py](https://github.com/fabiogaiera/transitioning-to-kx/blob/master/bid_ask_spread/bid_ask_spread_chart_creator.py)
 
 ### 🐍 Python script to generate the Chart
 
@@ -144,8 +142,8 @@ See: [bid_ask_spread_script.py](https://github.com/fabiogaiera/transitioning-to-
 
 ### 📚 Further readings
 
-- [As-of join kdb+ Documentation](https://code.kx.com/q/ref/aj/)  
+- [As-Of Join](https://code.kx.com/pykx/3.1/api/pykx-execution/q.html#aj)  
 - [Apply Attributes](https://code.kx.com/pykx/3.1/user-guide/advanced/attributes.html)
 - [Bid-Ask Spread Wikipedia Article](https://en.wikipedia.org/wiki/Bid%E2%80%93ask_spread)
 
-Grateful for your time and feedback — it helps me improve.
+Grateful for your time and feedback. It helps me improve.

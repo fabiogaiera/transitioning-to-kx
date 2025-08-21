@@ -2,7 +2,7 @@
 
 This post is a continuation of my previous article: 
 
-[🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)
+- [🚀 Transitioning to KX: Exploring a Series of Use Cases](https://www.linkedin.com/pulse/transitioning-kx-products-exploring-series-use-cases-fabio-gaiera-rfi2f)
 
 ## ⚠️ Getting comfortable with a new stack
 
@@ -25,8 +25,6 @@ Before we dive in, make sure:
 Now that you're set up, you're ready to build your Intraday Trading Volume Histogram step by step.
 
 ### 🗂️ Step 1: Create the dataset with PyKX
-
-Here's what we’ll cover:
 
 - 📂 Upload a CSV file (tick-by-tick trade data) into an in-memory kdb+ table
 - 🔍 Performing date-based queries
