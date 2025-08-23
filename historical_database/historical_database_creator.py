@@ -17,4 +17,4 @@ def create_or_update_database(csv_file_path, database_path, market_open, market_
     filtered_trades_table['date'] = filtered_trades_table['timestamp'].date
 
     db = kx.DB(path=database_path)
-    db.create(filtered_trades_table, 'trade_data', 'date')
+    db.create(filtered_trades_table, table_name='trade_data', partition='date')
