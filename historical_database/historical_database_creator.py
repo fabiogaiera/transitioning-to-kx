@@ -1,15 +1,20 @@
-from datetime import date
-
 import pykx as kx
 
-db = kx.DB(path='/home/fabio/db')
 
-N = 1000000
-trades = kx.Table(data={
-    'date': kx.random.random(N, [date(2020, 1, 1), date(2020, 1, 2)]),
-    'sym': kx.random.random(N, ['AAPL', 'GOOG', 'MSFT']),
-    'price': kx.random.random(N, 10.0),
-    'size': kx.random.random(N, 1000)
-})
+def create_or_update_database(csv_file_path, database_path, market_open, market_close):
+    # Upload CSV file into trades table
+    trades_table = kx.q.read.csv(csv_file_path, [kx.TimestampAtom, kx.SymbolAtom, kx.FloatAtom, kx.LongAtom])
 
-db.create(trades, 'trade_data', 'date')
+    # Filter trades by market hours
+    filtered_trades_table = trades_table.select(
+        where=(
+                (kx.Column('timestamp') >= kx.q(market_open)) &
+                (kx.Column('timestamp') <= kx.q(market_close))
+        )
+    )
+
+    # Add the column date
+    filtered_trades_table['date'] = filtered_trades_table['timestamp'].date
+
+    db = kx.DB(path=database_path)
+    db.create(filtered_trades_table, 'trade_data', 'date')

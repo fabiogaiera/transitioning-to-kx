@@ -1,5 +1,4 @@
-loadcsvandsavetable:{[csvpath1;csvpath2;marketopen;marketclose]
-
+loadcsv:{[csvpath1;csvpath2;marketopen;marketclose]
 
     // Load CSVs into tables
     trades: ("PSFJ";enlist ",") 0: `$csvpath1;
@@ -9,28 +8,26 @@ loadcsvandsavetable:{[csvpath1;csvpath2;marketopen;marketclose]
     trades: select from trades where timestamp within (marketopen;marketclose);
     quotes: select from quotes where timestamp within (marketopen;marketclose);
 
-    //Key the quotes table
-    //quotes: `sym`timestamp xkey quotes;
-
-
-    quotes: update `g#sym from `timestamp xasc quotes;
+    // Applying attributes
+    quotes: update `g#sym from quotes;
 
     // As-Of Join
-    taq: aj[`sym`timestamp;trades;quotes];
+    taq: aj[`sym`timestamp; trades; quotes];
+
+    // Filtering
 
 
     // Arithmetics to obtain bid-ask spread
-    taq: update mid_price: (bid_price + ask_price) % 2 from taq;
-    taq: update bid_ask_spread: 2 * (abs(price - mid_price) % mid_price) * 100 from taq;
+    taq: update mid_price:(bid_price+ask_price)%2 from taq;
+    taq: update bid_ask_spread:2*(abs (price-mid_price)%mid_price)*100 from taq;
 
+    // Show the TAQ dataset
     show taq
-
-    //save table here
 
  }
 
 
-loadcsvandsavetable["/home/fabio/data/IBM_trades.csv";"/home/fabio/data/IBM_quotes.csv";2025.06.16D13:30:00.000000000; 2025.06.16D20:00:00.000000000]
+loadcsv["/home/fabio/data/IBM_trades.csv"; "/home/fabio/data/IBM_quotes.csv"; 2025.06.16D13:30:00.000000000; 2025.06.16D20:00:00.000000000]
 
 
 exit 0
