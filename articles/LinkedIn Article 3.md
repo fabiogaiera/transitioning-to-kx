@@ -1,4 +1,4 @@
-# 📊 Transitioning to KX: Creating a Bid-Ask Spread Chart
+# 📈 Transitioning to KX: Creating a Bid-Ask Spread Chart
 
 This post continues from my previous write-ups:
 
