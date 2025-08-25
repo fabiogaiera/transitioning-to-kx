@@ -3,6 +3,7 @@ import pykx as kx
 
 def run_query(database_path):
     db = kx.DB(path=database_path)
+
     trades = db.table.trade_data.select(
 
         columns={'close': kx.Column('price').last()},
@@ -15,4 +16,8 @@ def run_query(database_path):
         by=kx.Column('date')
 
     )
-    print(trades)
+
+    kx.q['trades'] = trades
+
+    kx.q('trades: update pctchange: (close % prev close) from trades')
+    kx.q('show trades')
