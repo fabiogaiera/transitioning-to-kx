@@ -17,7 +17,12 @@ def run_query(database_path):
 
     )
 
-    kx.q['trades'] = trades
+    trades = trades.update(
+        kx.Column('return', value=(kx.Column('close').divide(kx.Column('close').prev()) - 1))
+    )
 
-    kx.q('trades: update pctchange: (close % prev close) from trades')
-    kx.q('show trades')
+    print(trades)
+
+    # kx.q['trades'] = trades
+    # kx.q('trades: update return: (close % (prev close)) - 1 from trades')
+    # kx.q('show trades')

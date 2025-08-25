@@ -1,4 +1,5 @@
 from historical_database.query_engine import run_query
+from historical_database.historical_database_creator import create_or_update_database
 
 if __name__ == "__main__":
     #    if len(sys.argv) != 4:
