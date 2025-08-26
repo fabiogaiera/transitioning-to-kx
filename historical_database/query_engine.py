@@ -18,8 +18,13 @@ def run_query(database_path):
     )
 
     trades = trades.update(
-        kx.Column('return', value=(kx.Column('close').divide(kx.Column('close').prev()) - 1))
+        kx.Column(
+            'return', value=(kx.Column('close').divide(kx.Column('close').prev())).log()
+
+                  )
     )
+
+
 
     print(trades)
 
